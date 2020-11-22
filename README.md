@@ -1,7 +1,7 @@
 # Employee Summary Template Engine
 [![GitHub license](https://img.shields.io/badge/license-MIT-green)](./LICENSE.txt)
 
-[Video]
+[Video of functionality](https://drive.google.com/file/d/1Yuqanjzmpzr5QPzRzjGQUn0qNA1NjFAJ/view)
 
 ## Description
 This is a CLI that outputs an HTML page with all of the team members and their current information. 
