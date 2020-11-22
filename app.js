@@ -75,22 +75,52 @@ function getQuestions(memberType) {
         {
             type: 'input',
             name: 'name',
-            message: `What is the ${memberType.toLowerCase()}'s name?`
+            message: `What is the ${memberType.toLowerCase()}'s name?`,
+            validate: function(input) {
+                if(!input)
+                    return 'You must enter a value';
+                return true;
+            }
         },
         {
             type: 'input',
             name: 'id',
-            message: `What is the ${memberType.toLowerCase()}'s id number?`
+            message: `What is the ${memberType.toLowerCase()}'s id number?`,
+            validate: function(input) {
+                if(!input)
+                    return 'You must enter a value';
+
+                if(isNaN(input))
+                    return 'You must enter a number';
+                
+                return true;
+            }
         },
         {
             type: 'input',
             name: 'email',
-            message: `What is the ${memberType.toLowerCase()}'s email?`
+            message: `What is the ${memberType.toLowerCase()}'s email?`,
+            validate: function(input) {
+                if(!input)
+                    return 'You must enter a value';
+
+                //Test if it is an eamil format
+                if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(input))
+                {
+                    return true;
+                }
+                return 'You have entered an invalid email address';
+            }
         },
         {
             type: 'input',
             name: customEmployeeAttributes[memberType].questionName,
-            message: customEmployeeAttributes[memberType].question
+            message: customEmployeeAttributes[memberType].question,
+            validate: function(input) {
+                if(!input)
+                    return 'You must enter a value';  
+                return true;
+            }
         },
         {
             type: 'list',
