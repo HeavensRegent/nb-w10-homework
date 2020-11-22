@@ -10,7 +10,33 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 
-
+//Map to easily call and get different items for different types of employees
+const customEmployeeAttributes = {
+    //Manager's custom items
+    'Manager': {
+        questionName: 'officeNumber',
+        question: "What is the manager's office number?",
+        create: function({name, id, email, officeNumber}) {
+            return new Manager(name, id, email, officeNumber);
+        }
+    },
+    //Engineer's custom items
+    'Engineer': {
+        questionName: 'github',
+        question: "What is the engineer's Github username?",
+        create: function({name, id, email, github}) {
+            return new Engineer(name, id, email, github);
+        }
+    },
+    //Intern's custom items
+    'Intern': {
+        questionName: 'school',
+        question: "What school is the intern attending?",
+        create: function({name, id, email, school}) {
+            return new Intern(name, id, email, school);
+        }
+    }
+};
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
@@ -111,31 +137,4 @@ function writeToFile(data) {
     }
 }
 
-//Map to easily call and get different items for different types of employees
-const customEmployeeAttributes = {
-    //Manager's custom items
-    'Manager': {
-        questionName: 'officeNumber',
-        question: "What is the manager's office number?",
-        create: function({name, id, email, officeNumber}) {
-            return new Manager(name, id, email, officeNumber);
-        }
-    },
-    //Engineer's custom items
-    'Engineer': {
-        questionName: 'github',
-        question: "What is the engineer's Github username?",
-        create: function({name, id, email, github}) {
-            return new Engineer(name, id, email, github);
-        }
-    },
-    //Intern's custom items
-    'Intern': {
-        questionName: 'school',
-        question: "What school is the intern attending?",
-        create: function({name, id, email, school}) {
-            return new Intern(name, id, email, school);
-        }
-    }
-};
 
